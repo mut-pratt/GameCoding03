@@ -6,7 +6,8 @@ public class Inventory: MonoBehaviour {
     public List<Potion> Potions;
     public Potion_Ui PotionUiPrefab;
     public Transform PotionsGrid;
-    
+    public TMPro.TMP_Text Description;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -24,6 +25,7 @@ public class Inventory: MonoBehaviour {
     {
         Potions.Add(potion);
         CreateUiPotion(potion);
+        UpdateDescription(potion);
     }
 
     /// <summary>
@@ -37,4 +39,13 @@ public class Inventory: MonoBehaviour {
         potionUi.Potion = potion;
     }
 
+    public void UpdateDescription(Potion potion)
+    {
+        Description.text = potion.Description;
+    }
+
+    public void DestroyPotion(Potion_Ui potionUi) {
+        Potions.Remove(potionUi.Potion);
+        Destroy(potionUi.gameObject);
+    }
 }
