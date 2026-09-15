@@ -9,6 +9,7 @@ public class Potion_Ui: MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
 {
     public Potion Potion;
     public Image Image;
+    public Button Button;
     public TMP_Text Text;
 
     Vector3 _StoredPosition;
@@ -27,6 +28,8 @@ public class Potion_Ui: MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
         Debug.Log("begin drag");
         _StoredPosition = transform.position;
         transform.parent = _Inventory.transform;
+
+        // disable the raycast target so that its not consuming raycasts
         Image.raycastTarget = false;
     }
 
@@ -35,6 +38,9 @@ public class Potion_Ui: MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
         Debug.Log("end drag");
         transform.position = _StoredPosition;
         transform.parent = _Inventory.PotionsGrid;
+
+
+        // re-enable the raycast target to make object interactable again
         Image.raycastTarget = true;
     }
 

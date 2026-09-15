@@ -1,12 +1,14 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Inventory: MonoBehaviour {
     public List<Potion> Potions;
     public Potion_Ui PotionUiPrefab;
     public Transform PotionsGrid;
     public TMPro.TMP_Text Description;
+
+    public UnityEvent<Potion> OnAnyPotionClicked;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,8 +37,16 @@ public class Inventory: MonoBehaviour {
     {
         Potion_Ui potionUi = Instantiate<Potion_Ui>(PotionUiPrefab);
         potionUi.transform.parent = PotionsGrid;
-
         potionUi.Potion = potion;
+        
+        // this is creating an annonymous function, we need it to be able to "capture"
+        // the local variable potion on the onClick callback (the function thats called
+        // when the button is clicked)
+        potionUi.Button.onClick.AddListener(() =>
+        {
+            Debug.Log("clicked: " + potion.DisplayName);
+            OnAnyPotionClicked.Invoke(potion);
+        });
     }
 
     public void UpdateDescription(Potion potion)

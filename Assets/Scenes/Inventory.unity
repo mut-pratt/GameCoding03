@@ -456,6 +456,9 @@ MonoBehaviour:
   PotionUiPrefab: {fileID: 2078944492159455154, guid: f15309397a11c614db6f8431be0bcd64, type: 3}
   PotionsGrid: {fileID: 944854692}
   Description: {fileID: 1128158332}
+  OnAnyPotionClicked:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &450941383
 GameObject:
   m_ObjectHideFlags: 0
@@ -1144,6 +1147,7 @@ GameObject:
   - component: {fileID: 1128158331}
   - component: {fileID: 1128158333}
   - component: {fileID: 1128158332}
+  - component: {fileID: 1128158334}
   m_Layer: 5
   m_Name: Description
   m_TagString: Untagged
@@ -1270,6 +1274,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1128158330}
   m_CullTransparentMesh: 1
+--- !u!114 &1128158334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128158330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b4d7721793bfb488ef2765fdc9da78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Description
 --- !u!1 &1214059879
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,16 +4,11 @@ using UnityEngine.EventSystems;
 public class Storage : MonoBehaviour, IDropHandler
 {
     Inventory _Inventory;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _Inventory = GetComponentInParent<Inventory>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -29,6 +24,8 @@ public class Storage : MonoBehaviour, IDropHandler
         if (potionUi)
         {
             _Inventory.DestroyPotion(potionUi);
-        }        
+        }
+
+        Potion potion = potionUi.Potion;
     }
 }

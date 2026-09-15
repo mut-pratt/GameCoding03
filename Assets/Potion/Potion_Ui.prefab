@@ -136,6 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Potion_Ui
   Potion: {fileID: 0}
   Image: {fileID: 5796582224304016644}
+  Button: {fileID: 6079629532601668300}
   Text: {fileID: 6806330444334774823}
 --- !u!1 &1724746513035924435
 GameObject:
