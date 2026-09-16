@@ -33,9 +33,7 @@ public class Inventory: MonoBehaviour {
     /// </summary>
     void CreateUiPotion(Potion potion)
     {
-        Potion_Ui potionUi = Instantiate<Potion_Ui>(PotionUiPrefab);
-        potionUi.transform.parent = PotionsGrid;
-
+        Potion_Ui potionUi = Instantiate<Potion_Ui>(PotionUiPrefab, PotionsGrid);
         potionUi.Potion = potion;
     }
 

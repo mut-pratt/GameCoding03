@@ -23,12 +23,12 @@ public class Storage : MonoBehaviour, IDropHandler
         {
             return;
         }
-        
+
         Debug.Log("dropped " + target.name);
         Potion_Ui potionUi = target.GetComponent<Potion_Ui>();
         if (potionUi)
         {
             _Inventory.DestroyPotion(potionUi);
-        }        
+        }
     }
 }
