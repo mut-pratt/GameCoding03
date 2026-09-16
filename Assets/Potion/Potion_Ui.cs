@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -15,12 +16,19 @@ public class Potion_Ui: MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
     Vector3 _StoredPosition;
     Inventory _Inventory;
 
+    public UnityEvent<Potion> OnPotionClicked;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         Image.sprite = Potion.Image;
         Text.text = Potion.DisplayName;
         name = Potion.DisplayName;
         _Inventory = GetComponentInParent<Inventory>();
+        Button.onClick.AddListener(OnButtonClicked);
+    }
+
+    void OnButtonClicked() {
+        OnPotionClicked.Invoke(Potion);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
