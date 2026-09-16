@@ -11,7 +11,7 @@ public class Inventory: MonoBehaviour {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        for(int i = 0; i < Potions.Count; i++) 
+        for(int i = 0; i < Potions.Count; i++)
         {
             Potion potion = Potions[i];
             CreateUiPotion(potion);
@@ -33,7 +33,9 @@ public class Inventory: MonoBehaviour {
     /// </summary>
     void CreateUiPotion(Potion potion)
     {
-        Potion_Ui potionUi = Instantiate<Potion_Ui>(PotionUiPrefab, PotionsGrid);
+        Potion_Ui potionUi = Instantiate<Potion_Ui>(PotionUiPrefab);
+        potionUi.transform.parent = PotionsGrid;
+
         potionUi.Potion = potion;
     }
 
