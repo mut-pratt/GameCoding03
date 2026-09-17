@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour {   
     [Header("tuning")]
     [SerializeField] float m_Speed;
 
@@ -19,6 +20,11 @@ public class Player : MonoBehaviour {
     }
     
     void OnTriggerEnter(Collider other) {
-        Debug.Log("player collided with " + other.name);
+        Debug.Log("collided with " + other.name);
+        Switch sw = other.GetComponent<Switch>();
+        if (sw)
+        {
+            Game.Instance.PressedSwitch(sw.Number);
+        }
     }
 }
