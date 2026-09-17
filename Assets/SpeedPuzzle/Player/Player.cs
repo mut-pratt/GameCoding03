@@ -1,9 +1,24 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour {
-    // Update is called once per frame
-    void Update()
-    {
+    [Header("tuning")]
+    [SerializeField] float m_Speed;
 
+    [Header("input")]
+    [SerializeField] InputActionReference m_Move;
+
+    [Header("refs")]
+    [SerializeField] CharacterController m_Controller;
+
+    // Update is called once per frame
+    void Update() {
+        var input = m_Move.action.ReadValue<Vector2>();
+        var move = new Vector3(input.x, 0, input.y);
+        m_Controller.SimpleMove(move * m_Speed);
+    }
+    
+    void OnTriggerEnter(Collider other) {
+        Debug.Log("player collided with " + other.name);
     }
 }
