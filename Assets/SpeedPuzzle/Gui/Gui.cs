@@ -6,7 +6,7 @@ public class Gui: MonoBehaviour {
 
     // -- lifecycle --
     void Update() {
-        var coins = Game.Instance.Coins;
+        var coins = Game.Instance.GetCoins();
         m_Coins.text = $"{coins} coins";
     }
 }
