@@ -31,5 +31,10 @@ public class Player : MonoBehaviour {
             Game.Instance.Coins++;
             Destroy(coin.gameObject);
         }
+
+        Goal goal = other.GetComponent<Goal>();
+        if (goal) {
+            Game.Instance.TouchGoal();
+        }
     }
 }
