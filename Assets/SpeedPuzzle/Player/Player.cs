@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour {   
+public class Player : MonoBehaviour {
     [Header("tuning")]
     [SerializeField] float m_Speed;
 
@@ -18,13 +18,18 @@ public class Player : MonoBehaviour {
         var move = new Vector3(input.x, 0, input.y);
         m_Controller.SimpleMove(move * m_Speed);
     }
-    
+
     void OnTriggerEnter(Collider other) {
         Debug.Log("collided with " + other.name);
         Switch sw = other.GetComponent<Switch>();
-        if (sw)
-        {
-            Game.Instance.PressedSwitch(sw.Number);
+        if (sw) {
+            Game.Instance.PressSwitch(sw.Number);
+        }
+
+        Coin coin = other.GetComponent<Coin>();
+        if (coin) {
+            Game.Instance.Coins++;
+            Destroy(coin.gameObject);
         }
     }
 }
